@@ -1,0 +1,84 @@
+
+<ion-header>
+
+   <ion-navbar>
+   <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()" >
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title ><ion-icon name="document"> </ion-icon> {{class_name}}</ion-title>
+   
+  </ion-navbar>
+
+
+</ion-header>
+ 
+
+<ion-content padding>
+
+	<ion-list>
+     
+		   <ion-item>
+     		 <ion-label  >Name:</ion-label>
+      		<ion-input [(ngModel)]="class_name" value="{{class_name}}" [ngModelOptions]="{standalone: true}"></ion-input>
+   		   </ion-item>
+
+   		   <ion-item>
+     		 <ion-label >Description:</ion-label>
+      		<ion-textarea  [(ngModel)]="class_desc"  value="{{class_desc}}" [ngModelOptions]="{standalone: true}"></ion-textarea>
+   		   </ion-item>
+        
+          
+            <ion-item>
+		    <ion-label>Schedule:</ion-label>
+		    <ion-select [(ngModel)]="sched_id" interface="action-sheet" placeholder="{{sched}}" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let s of schedules" value="{{s.schedule_id}}">{{s.schedule_description}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+
+            
+            <ion-item>
+		    <ion-label>Time:</ion-label>
+		    <ion-select [(ngModel)]="time" interface="action-sheet" placeholder="{{time}}" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let t of timepicker" value="{{t}}">{{t}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+            
+           
+            <ion-item>
+		    <ion-label>Room:</ion-label>
+		    <ion-select [(ngModel)]="room_id" interface="action-sheet" placeholder="{{rm}}" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let room of rooms" value="{{room.room_id}}">{{room.room_description}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+
+
+   		   <ion-item>
+		    <ion-label>Semester:</ion-label>
+		    <ion-select [(ngModel)]="class_sem" interface="action-sheet" placeholder="{{class_sem}}" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let sem of semester" value="{{sem.semester_id}}">{{sem.semester}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+	  	    <ion-item>
+		    <ion-label>School Year:</ion-label>
+		    <ion-select [(ngModel)]="class_schoolyear" placeholder="{{class_schoolyear}}" interface="action-sheet" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let sy of schoolyear" value="{{sy.schoolyear_id}}">{{sy.school_year}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+	  	  
+
+    		<ion-item class="btn-item" (click)="update_class(class_name, sched, time, rooms, class_desc, class_sem, class_schoolyear)" >
+    			  <h4 color="white"> Update class </h4>
+    		</ion-item>
+				
+
+
+	</ion-list>
+
+</ion-content>

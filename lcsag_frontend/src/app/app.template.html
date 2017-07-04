@@ -1,0 +1,132 @@
+
+<!-- logged out menu -->
+<ion-menu id="loggedOutMenu" [content]="content">
+  
+
+  <ion-content class="outer-content">
+   <div style="text-align:center;">
+    <img src="assets/img/pinklogo.png"  width="100px">
+    </div>
+
+    <ion-list class="nav-list">
+    
+      <button  class="nav-button" icon-left menuClose (click)="home_page()">
+        <ion-icon item-left name="home"  color="primary">  Home </ion-icon>
+        
+      </button>
+
+       <button   class="nav-button" icon-left menuClose (click)="addclass_page()">
+        <ion-icon item-left name="add-circle"  color="primary">  Add Class </ion-icon>
+       
+      </button>
+
+       <button   class="nav-button" icon-left menuClose (click)="classlist_page()">
+        <ion-icon item-left name="list"  color="primary">  Class List </ion-icon>
+      
+      </button>
+
+       <button  class="nav-button" icon-left menuClose (click)="account_page()" >
+        <ion-icon item-left name="person"  color="primary">  Account </ion-icon>
+     
+      </button>
+
+       <button   class="nav-button-last" icon-left menuClose (click)="about_page()">
+        <ion-icon item-left name="information-circle"  color="primary">  About LCSAG App </ion-icon>
+       
+      </button>
+    </ion-list>
+      
+      <div class="instructor-header" padding>
+            <ion-icon name="ios-people" color="primary"> Instructors </ion-icon>
+      </div>
+      
+    <ion-list >
+    
+    <ion-item class="instructors-item" *ngFor="let instructor of instructorsList" #item>
+     
+        <ion-avatar item-left>
+          <img class="student-image" src="assets/img/avatar2.png">
+        </ion-avatar>
+        <h2>{{instructor.instructor_username}}</h2>
+        <p>{{instructor.instructor_firstname}}, {{instructor.instructor_lastname}} </p>
+   
+     
+    </ion-item>
+  </ion-list>
+
+  
+  </ion-content>
+
+</ion-menu>
+
+
+
+
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<style>
+  .user{
+
+      text-align:center;
+     
+  }
+  .user-avatar{
+
+    display: block;
+    line-height: 1;
+    /* margin-left: 50%; */
+    margin-left: calc(55% - 15%);
+  }
+  .user-img{
+     width: 60px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .nav-button {
+    background-color: #fff;
+    border-top: 1px solid #ebebeb;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+    font-size: medium;
+    font-family: sans-serif;
+  }
+  .nav-button:active {
+    background-color: #ebebeb;
+   
+  }
+   .nav-button-last {
+    background-color: #fff;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+    font-size: medium;
+    font-family: sans-serif;
+  }
+   .nav-button-last:active {
+    background-color: #ebebeb;
+   
+  }
+    .instructors-item{
+     
+    position: relative;
+    padding-right: 0;
+    padding-left: 16px;
+    font-size: 1.6rem;
+    font-weight: normal;
+    text-transform: none;
+    color: #000;
+    background-color: #fff;
+    box-shadow: none;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    }
+    .instructor-header{
+        text-align: center;
+        background-color:#f4f4f4;
+    }
+  
+</style>

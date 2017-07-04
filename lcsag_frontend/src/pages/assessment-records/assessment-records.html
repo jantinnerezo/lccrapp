@@ -1,0 +1,328 @@
+
+<ion-header>
+ <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title>{{class_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="onAdd()"  >
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+    
+<ion-toolbar no-border-top>
+    <ion-segment  [(ngModel)]="term" >
+      <ion-segment-button value="Prelims" (click)="display_prelim()">
+        Prelims ({{count_prelim}})
+      </ion-segment-button>
+      <ion-segment-button value="Midterms" (click)="display_midterm()">
+        Midterms ({{count_midterm}})
+      </ion-segment-button>
+      <ion-segment-button value="Finals" (click)="display_final()">
+        Finals ({{count_final}})
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content >
+    
+    
+ 
+  <div [ngSwitch]="term">
+    <div *ngSwitchCase="'Prelims'">
+        
+        
+          
+  <div class="tab-title" >
+    
+    	<ion-item class="sort-assessment" >
+    		 <ion-label>Sort by:</ion-label>
+			    <ion-select [(ngModel)]="prelim_type" (ionChange)="sort_prelim($event)" [ngModelOptions]="{standalone: true}" >
+           <ion-option  value="all">All</ion-option>
+			      <ion-option *ngFor="let t of types" value="{{t.type_id}}">{{t.type}}</ion-option>
+			    </ion-select>
+						   
+		</ion-item>
+  
+  </div>
+
+  <div>
+
+   <div [hidden]="p_no_result == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item  style="background-color:#f4f4f4;" class="error-item">
+      <h2 align="center" color='errormsg'> {{zero_result}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item" style="background-color:#f4f4f4;" >
+      <h2 align="center" color='errormsg'> Unable to fetch records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item style="background-color:#f4f4f4;" class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+   <div [hidden]="p_has_records == true || no_connection == true || p_no_result == true" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden  style="background-color:#f4f4f4;"class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+ 
+  </div>
+
+  <div [hidden]="p_no_result == true || no_connection == true || p_has_records == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let assessment of prelim_records" #item>
+      <button ion-item (click)="record_assessment(assessment)"  >
+      	 <ion-icon item-left color="present"  *ngIf="assessment.status == 1" name="checkmark">
+        
+        </ion-icon>
+        <ion-icon item-left color="label" *ngIf="assessment.status == 0" name="document">
+        
+        </ion-icon>
+        <h2>{{assessment.assessment_name}} </h2>
+       
+         <p color="primary"> Total score: {{assessment.assessment_totalScore}} </p>
+        <p>Created: {{assessment.assessment_date}}, {{assessment.assessment_time}}</p>
+       
+       <ion-note item-right>
+        	{{assessment.type_name}} 
+      </ion-note>
+      </button>
+     
+
+      <ion-item-options>
+       <!-- <button ion-button color="material-blue" (click)="edit_assessment(item,assessment)" >
+            Edit
+        </button> -->
+         <button ion-button color="danger" (click)="delete_assessment(assessment, item, assessment.assessment_id)"  >
+            Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+</div>
+
+     
+      
+    </div>
+      
+      
+    <div *ngSwitchCase="'Midterms'">
+      
+        
+          
+  <div class="tab-title" >
+   
+    	<ion-item class="sort-assessment" >
+    		 <ion-label>Sort by:</ion-label>
+			    <ion-select [(ngModel)]="midterm_type" (ionChange)="sort_midterm($event)" [ngModelOptions]="{standalone: true}" >
+           <ion-option  value="all">All</ion-option>
+			      <ion-option *ngFor="let t of types" value="{{t.type_id}}">{{t.type}}</ion-option>
+			    </ion-select>
+						   
+		</ion-item>
+  
+  </div>
+
+  <div>
+
+   <div [hidden]="m_no_result == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item  style="background-color:#f4f4f4;" class="error-item">
+      <h2 align="center" color='errormsg'> {{zero_result}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item" style="background-color:#f4f4f4;" >
+      <h2 align="center" color='errormsg'> Unable to fetch records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item style="background-color:#f4f4f4;" class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+   <div [hidden]="m_has_records == true || no_connection == true || m_no_result == true" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden  style="background-color:#f4f4f4;"class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+ 
+  </div>
+
+  <div [hidden]="m_no_result == true || no_connection == true || m_has_records == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let assessment of midterm_records" #item>
+      <button ion-item (click)="record_assessment(assessment)"  >
+      	 <ion-icon item-left color="present"  *ngIf="assessment.status == 1" name="checkmark">
+        
+        </ion-icon>
+        <ion-icon item-left color="label" *ngIf="assessment.status == 0" name="document">
+        
+        </ion-icon>
+        <h2> <b> {{assessment.assessment_name}} </b> </h2>
+       
+         <p color="primary"> Total score: {{assessment.assessment_totalScore}} </p>
+         
+        <p>Created: {{assessment.assessment_date}}, {{assessment.assessment_time}}</p>
+       
+       <ion-note item-right>
+        	{{assessment.type_name}} 
+      </ion-note>
+      </button>
+     
+
+      <ion-item-options>
+     
+         <button ion-button color="danger" (click)="delete_assessment(assessment, item, assessment.assessment_id)"  >
+            Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+</div>
+
+        
+        
+</div>  
+      
+      
+    <div *ngSwitchCase="'Finals'">
+      
+          
+  <div class="tab-title" >
+   
+    	<ion-item class="sort-assessment" >
+    		 <ion-label>Sort by:</ion-label>
+			    <ion-select [(ngModel)]="final_type" (ionChange)="sort_final($event)" [ngModelOptions]="{standalone: true}" >
+           <ion-option  value="all">All</ion-option>
+			      <ion-option *ngFor="let t of types" value="{{t.type_id}}">{{t.type}}</ion-option>
+			    </ion-select>
+						   
+		</ion-item>
+  
+  </div>
+
+  <div>
+
+   <div [hidden]="f_no_result == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item  style="background-color:#f4f4f4;" class="error-item">
+      <h2 align="center" color='errormsg'> {{zero_result}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item" style="background-color:#f4f4f4;" >
+      <h2 align="center" color='errormsg'> Unable to fetch records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item style="background-color:#f4f4f4;" class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+   <div [hidden]="f_has_records == true || no_connection == true || f_no_result == true" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden  style="background-color:#f4f4f4;"class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+ 
+  </div>
+
+  <div [hidden]="fno_result == true || no_connection == true || f_has_records == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let assessment of final_records" #item>
+      <button ion-item (click)="record_assessment(assessment)"  >
+      	 <ion-icon item-left color="present"  *ngIf="assessment.status == 1" name="checkmark">
+        
+        </ion-icon>
+        <ion-icon item-left color="label" *ngIf="assessment.status == 0" name="document">
+        
+        </ion-icon>
+        <h2>{{assessment.assessment_name}} </h2>
+       
+         <p color="primary"> Total score: {{assessment.assessment_totalScore}} </p>
+        
+        <p>Created: {{assessment.assessment_date}}, {{assessment.assessment_time}}</p>
+       
+       <ion-note item-right>
+        	{{assessment.type_name}} 
+      </ion-note>
+      </button>
+     
+
+      <ion-item-options>
+       
+         <button ion-button color="danger" (click)="delete_assessment(assessment, item, assessment.assessment_id)"  >
+            Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+</div>
+
+        
+    </div>
+ </div>
+    
+  
+</ion-content>

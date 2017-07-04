@@ -1,0 +1,74 @@
+<ion-header>
+	<ion-navbar>
+		
+		<ion-title><ion-icon name="ios-create-outline"> </ion-icon> Register </ion-title>
+		<ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="signup-page">
+
+
+	
+			<div class="field-frame">
+	<form #signupForm="ngForm" novalidate>
+	
+				<h2 align="center" color="primary" align="center"> Create Account </h2>
+
+		<ion-list class="signup-list">
+			
+			<ion-item>
+				<ion-label floating >Identification Number</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.id" name="id" type="text" #id="ngModel" required>
+				</ion-input>
+			</ion-item>
+			
+
+			<ion-item>
+				<ion-label floating >Lastname</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.lastname" name="lastname" type="text" #lastname="ngModel" required>
+				</ion-input>
+			</ion-item>
+			
+
+			<ion-item>
+				<ion-label floating >Firstname</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.firstname" name="firstname" type="text" #firstname="ngModel" required>
+				</ion-input>
+			</ion-item>
+			
+
+			<ion-item >
+				<ion-label floating >Create a Username</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" required>
+				</ion-input>
+			</ion-item>
+			
+
+			<ion-item>
+				<ion-label floating>Create a Password</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+				</ion-input>
+			</ion-item>
+		
+
+			<ion-item>
+				<ion-label floating >Confirm Password</ion-label>
+				<ion-input class="fields" [(ngModel)]="signup.conpassword" name="conpassword" type="password" #conpassword="ngModel" required>
+				</ion-input>
+			</ion-item>
+			
+            <ion-item (click)="onSignup(signupForm)" class="reg-btn"  type="submit" >
+                 <p align="center" color="white"> Register </p>
+            </ion-item>
+		</ion-list>
+
+		
+	
+	</form>
+</div>
+</ion-content>

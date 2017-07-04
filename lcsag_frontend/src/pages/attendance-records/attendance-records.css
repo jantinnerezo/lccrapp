@@ -1,0 +1,85 @@
+/* line 1, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+page-attendance-records {
+  font-family: sans-serif;
+  /*.search-div{
+
+       background-color:#f4f4f4;
+  }*/ }
+  /* line 4, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .content-md {
+    color: #000;
+    background-color: #f4f4f4; }
+  /* line 9, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .no_connection {
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 20%; }
+  /* line 16, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .sort-item {
+    padding-left: 0;
+    background-color: #fff; }
+  /* line 24, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records ion-col {
+    display: block;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0;
+    width: 100%; }
+  /* line 33, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .list-md {
+    margin: 10px 10px 16px 10px; }
+  /* line 36, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .list-md ion-item-sliding {
+    background-color: #fff;
+    margin-bottom: 10px; }
+  /* line 41, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .list-md .item-block .item-inner {
+    border-bottom: 0 solid #dedede; }
+  /* line 44, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: 0 solid #dedede; }
+  /* line 48, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .tab-icon {
+    display: inline-block;
+    font-size: 1em; }
+  /* line 52, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .tab-label {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    padding: 10px; }
+  /* line 69, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .tab-title {
+    border-bottom: solid 1px #cccccc;
+    text-align: center; }
+  /* line 76, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .sort-attendance {
+    padding-left: 16px;
+    background-color: #fff;
+    border-bottom: solid 1px #cccccc; }
+  /* line 84, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .item-md .item-block .item-inner {
+    padding-right: 0;
+    border-bottom: 0; }
+  /* line 92, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .item_padding {
+    padding-left: 0; }
+  /* line 96, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .item-md {
+    padding-left: 20px; }
+  /* line 101, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/attendance-records/attendance-records.scss */
+  page-attendance-records .attendance-item {
+    border-left: 8px solid #8bc34a;
+    margin-bottom: 8px; }
+
+/*# sourceMappingURL=attendance-records.css.map */

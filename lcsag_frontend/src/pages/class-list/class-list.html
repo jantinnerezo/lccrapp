@@ -1,0 +1,144 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Class List ({{count}})</ion-title>
+    <ion-buttons end>
+     <button ion-button icon-only (click)="addClass()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="classlist-content">
+
+	<!--<ion-list>
+
+    <ion-item-group *ngFor="let day of classDays">
+
+      <ion-item-divider sticky>
+        <ion-label>
+        	
+          {{day.day_description}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let class of classList" #slidingItem >
+
+        <button ion-item >
+          <h3>{{class.class_name}}</h3>
+          <p>
+            {{class.class_desc}}
+            
+          </p>
+        </button>
+
+        <ion-item-options>
+          <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+            Favorite
+          </button>
+          <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+            Remove
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+    </ion-item-group>
+
+  </ion-list>
+  -->
+  <div class="no_connection">
+ 
+  
+   <div class="div-sort" >
+    <ion-row class="row1">
+      <ion-col class="sort-item"> 
+      
+        <ion-select [(ngModel)]="class_sem" placeholder="{{sem}}" (ionChange)="sort_list($event)">
+         
+          <ion-option *ngFor="let sem of semester" value="{{sem.semester_id}}">{{sem.semester}}</ion-option>
+       </ion-select>
+      </ion-col>
+       
+      <ion-col class="sort-item"> 
+      
+        <ion-select [(ngModel)]="class_schoolyear" placeholder="{{sy}}" (ionChange)="sort_list($event)">
+      
+          <ion-option *ngFor="let sy of schoolyear" value="{{sy.schoolyear_id}}">{{sy.schoolyear}}</ion-option>
+       </ion-select>
+      </ion-col>
+      
+    
+    </ion-row>
+ </div>
+  </div>
+
+  <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="alert" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> {{message}} </h2> </ion-item>
+    <ion-item hidden class="error-item"><button ion-button icon-left block clear (click)="addClass()" >
+        <ion-icon name="add"> Add Class</ion-icon>
+    </button></ion-item>
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Cannot connect to server </h2> </ion-item>
+     <ion-item class="error-item"><button ion-button icon-left clear block (click)="display_classList()">
+      <ion-icon name="refresh"> Tap to retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+  </div>
+
+   <div [hidden]="has_class == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block (click)="display_classList()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+  </div>
+
+  <div [hidden]="no_result == true || no_connection == true || has_class == false">
+
+
+<div *ngFor="let class of classList"  class="list-frame" (click)="openClass(class)" (press)="class_options(class)" >
+    
+  <h4> {{class.class_name}}   </h4>
+ 
+    <p color="errormsg"> {{class.class_desc}} </p>
+     <p color="errormsg"> {{class.schedule}}, {{class.start_time}} - {{class.end_time}}</p>
+     <p color="errormsg"> {{class.room}} </p>
+
+</div>
+      
+
+
+<!--</ion-list> 
+   	</ion-item-group>-->
+
+  <ion-list no-line>
+  <ion-item class="error-item">
+      <button ion-button icon-only block clear large (click)="addClass()" >
+        <ion-icon  name="add-circle" >  </ion-icon>
+      </button>
+ </ion-item>
+</ion-list>
+</div>
+

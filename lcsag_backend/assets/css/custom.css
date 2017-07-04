@@ -1,0 +1,39 @@
+.sitelogo{
+	/*height: auto !important;*/
+}
+
+.color-green{
+	color: #47b475;
+}
+
+.color-blue{
+	color: #2e59f3;
+}
+
+.mb10{
+    margin-bottom: 10px !important;
+}
+
+.mr10{
+    margin-right: 10px !important;
+}
+
+.mt20{
+    margin-top: 20px !important;
+}
+
+
+.pr0{
+    padding-right: 0px !important;
+}
+
+
+.affix {
+    position: inherit !important;
+}
+
+
+.mylogs_view{
+	height:300px;
+	overflow-y: auto;
+}

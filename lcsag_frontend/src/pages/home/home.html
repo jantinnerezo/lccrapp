@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title> LCSAG App </ion-title>
+   
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="about-header">
+
+      <img class="img-background" src="assets/img/lourdes.png" >
+   
+    <div class="img-header">
+         <img src="assets/img/whitelogo.png" >
+    </div>
+  
+  </div>
+  <div class="about-info">
+    <h4 color="primary"> LCSAG App</h4>
+
+       <h6> Lourdes College Student Attendance 
+           and Grading Application</h6>
+  
+    <p class="narrative">
+      A Mobile based students attendance checking and monitoring also includes
+      recording of students assessments and outputs. Exclusively for Lourdes 
+      College instructors to promote paperless technology and to be more 
+      productive at work.
+    </p>
+
+     <ion-row responsive-sm>
+      <ion-col>  
+        <button  (click)="addClass()" class="add-class-btn" type="submit" ><ion-icon name="add"> Add New Class </ion-icon></button>
+      </ion-col>
+      <ion-col>
+        <button  (click)="myClassList()" class="class-list-btn" type="submit" ><ion-icon name="list">  My Class List </ion-icon></button>
+      </ion-col>
+    </ion-row>
+  
+  </div>
+</ion-content>

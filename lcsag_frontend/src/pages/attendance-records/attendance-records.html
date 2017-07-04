@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title>{{class_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onAdd()"   >
+        <ion-icon name="add"></ion-icon>
+      </button>
+        
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+	 
+  <div class="tab-title">
+  
+          <ion-title color="label" class="tab-label">  <ion-icon name="calendar" class="tab-icon" color="label">  Attendance Records ({{count}}) </ion-icon>  </ion-title> 
+ 
+   </div>
+    
+    <div class="sort-attendance">
+    <ion-row>  
+    	<ion-col>
+    		 <ion-item class="sort-item" >
+    		 <ion-label>Month:</ion-label>
+			    <ion-datetime (ionChange)="monthChange($event)"  displayFormat="MMMM" [(ngModel)]="months" ></ion-datetime>
+			   
+			  </ion-item>
+    	</ion-col>
+
+    	<ion-col>
+    		 <ion-item class="sort-item">
+    		 <ion-label>Year:</ion-label>
+			    <ion-datetime (ionChange)="yearChange($event)"   min="2017" max="2025-12-31" displayFormat="YYYY" [(ngModel)]="years" ></ion-datetime>
+			   
+			  </ion-item>
+    	</ion-col>
+
+    	
+    </ion-row>
+    </div>
+
+  <div>
+
+   <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item  style="background-color:#f4f4f4;" class="error-item">
+      <h2 align="center" color='errormsg'> {{zero_result}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item" style="background-color:#f4f4f4;" >
+      <h2 align="center" color='errormsg'> Unable to fetch records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item style="background-color:#f4f4f4;" class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+   <div [hidden]="has_records == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines style="background-color:#f4f4f4;">
+    <ion-item class="error-item" style="background-color:#f4f4f4;" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden  style="background-color:#f4f4f4;"class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+ 
+  </div>
+
+  <div [hidden]="no_result == true || no_connection == true || has_records == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item  class="attendance-item"  *ngFor="let attendance of attendance_records" (press)="attendance_options(attendance)" (click)="open_attendance(attendance)" >
+      
+      	 <h2 >
+            <b> {{attendance.attendance_label}} </b>
+        </h2>
+        <h4 color="label">{{attendance.attendance_date}}   </h4>
+        <h4  color="label"> {{attendance.attendance_time}} </h4>
+        
+        <ion-note item-right>
+           <ion-icon name="paper">  Reports </ion-icon>
+        </ion-note>
+    
+     
+      <ion-item-options>
+       
+         <button ion-button color="danger"  (click)="delete_attendance(attendance, item, attendance.attendance_id)" >
+            Delete
+        </button>
+      </ion-item-options>
+    </ion-item>
+  </ion-list>
+</div>
+</div>
+
+
+</ion-content>

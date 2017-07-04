@@ -1,0 +1,14 @@
+{
+  "name": "lcsag-app",
+  "app_id": "2b5a554f",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "type": "ionic-angular"
+}

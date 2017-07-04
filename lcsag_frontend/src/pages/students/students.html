@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title>{{class_name}}</ion-title>
+    <ion-buttons end>
+   <button *ngIf="visible == false" ion-button icon-only (click)="search()" >
+        <ion-icon name="search" ></ion-icon>
+      </button>
+          <button  *ngIf="visible == true" ion-button icon-only (click)="hide_search()" >
+        <ion-icon name="search" ></ion-icon>
+      </button>
+      <button ion-button icon-only  (click)="show_students()" >
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+      <ion-toolbar no-border-top *ngIf="visible == true">
+    <ion-searchbar color="primary"
+                   [(ngModel)]="searchText"
+                   (ionInput)="search_students($event)"
+                   placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  
+  <div class="tab-title">
+    <ion-title color="label" class="tab-label">  <ion-icon name="ios-people" class="tab-icon" color="label">  Students ({{count}}) </ion-icon>  </ion-title> 
+  </div>
+	
+ <div > 
+
+  <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="ios-people" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> {{zero_result}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Unable to fetch Students </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item class="error-item"><button ion-button icon-left clear block (click)="display_students()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+   <div [hidden]="has_students == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+ 
+  </div>
+
+  <div [hidden]="no_result == true || no_connection == true || has_students == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let student of students" #item>
+      <button ion-item (click)="view_profile(student)" >
+        <ion-avatar item-left>
+          <img class="student-image" src="assets/img/avatar2.png">
+        </ion-avatar>
+        <h2 color="primary"><b>{{student.student_lastname}}, {{student.student_firstname}} </b> </h2>
+        <p>{{student.student_course}}</p>
+      
+      </button>
+     
+      <ion-item-options>
+        <button ion-button color="danger" (click)="onRemove(student, item, student.student_id, student.student_lastname, student.student_firstname)" >
+            Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+</div>
+  
+</ion-content>

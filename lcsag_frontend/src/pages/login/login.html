@@ -1,0 +1,77 @@
+
+<ion-content class="login-content">
+	
+	
+	<div class="image-container">
+         <img src="assets/img/pinklogo.png" class="login-image" >
+	 </div>
+	
+
+  
+   	<h2 color="light-dark" align="center"> Login </h2> 
+	<form #loginForm="ngForm" novalidate>
+		
+		
+
+		<div class="login-frame">
+		<ion-list no-line class="login-list">
+		<ion-row responsive-sm>
+		<ion-col class="login-col">
+			<ion-item class="login-input">
+				
+				<ion-input   [(ngModel)]="login.username" name="username" (change)="hideInvalid($event)" placeholder="Username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off" 
+					required>
+				</ion-input>
+			</ion-item>
+			</ion-col>
+		<ion-col class="login-col">
+			<ion-item class="login-input" >
+
+				<ion-input  [(ngModel)]="login.password" name="password"   (change)="hideInvalid($event)" placeholder="Password"  type="password" #password="ngModel" required>
+				</ion-input>
+			</ion-item>
+			</ion-col>
+			</ion-row>
+			
+			
+			
+		</ion-list>
+            
+            <div class="invalid"  [hidden]="incorrect == false || submitted == false" color="danger">
+                <p align="center" color="invalid">
+				Username and password is invalid or your account may not yet confirmed
+			</p>
+            
+            </div>
+		
+	
+			<!--	<button ion-button clear  color="primary" type="submit" block>Forgot Password?</button>-->
+			
+		<ion-row >
+		       <div class="login-btn" (click)="onLogin(loginForm)">
+				<ion-icon color="white" name="log-in"> Login </ion-icon>
+			 </div>
+		
+		</ion-row>
+        
+            <ion-row> 
+            
+                <button ion-button  (click)="onSignup()" color='link' clear block  type="submit" class="register-btn" > Don't have an account? </button>
+            </ion-row>
+
+		</div>
+
+		
+	</form>
+
+    <div class="forgot">
+        <ion-row>
+        
+     
+    <button ion-button  (click)="showForgot()" color='blue-grey' clear block  type="submit" class="register-btn" > I forgot my username and password. </button>
+        </ion-row>
+</div>
+	
+
+</ion-content>
+

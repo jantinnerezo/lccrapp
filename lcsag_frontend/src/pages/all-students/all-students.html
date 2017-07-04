@@ -1,0 +1,143 @@
+<!--
+  Generated template for the AllStudents page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> <ion-icon name='ios-people'> </ion-icon> Students Portal </ion-title>
+     <ion-buttons end>
+     <button *ngIf="visible == false" ion-button icon-only (click)="search()" >
+        <ion-icon name="search" ></ion-icon>
+      </button>
+          <button  *ngIf="visible == true" ion-button icon-only (click)="hide_search()" >
+        <ion-icon name="search" ></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="dismiss()" >
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
+      
+  </ion-navbar>
+   <ion-toolbar no-border-top *ngIf="visible == true">
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="search_student($event)"
+                   placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content >
+   <div class="filters"  >
+   <ion-input [(ngModel)]="course"   hidden [ngModelOptions]="{standalone: true}"></ion-input>
+   <ion-input [(ngModel)]="year"  hidden [ngModelOptions]="{standalone: true}"></ion-input>
+    <ion-row >
+      <ion-col>
+        <ion-item  class="sort-item" color="light">
+        <ion-label>Course:</ion-label>
+        <ion-select class='filter-items' [(ngModel)]="course" interface="action-sheet" (ionChange)="sort_course($event)"  placeholder="All" [ngModelOptions]="{standalone: true}">
+          <ion-option value="all" selected="true">All</ion-option>
+          <ion-option *ngFor="let c of courses" value="{{c.course_name}}">{{c.course_name}}</ion-option>
+       </ion-select>
+       </ion-item>
+      </ion-col>
+
+        <ion-col>
+       <ion-item class="sort-item" color="light">
+       <ion-label>Year:</ion-label>
+        <ion-select class='filter-items' [(ngModel)]="year" interface="action-sheet" (ionChange)="sort_year($event)"  placeholder="All" [ngModelOptions]="{standalone: true}">
+           <ion-option value="all" selected="true">All</ion-option>
+          <ion-option *ngFor="let years of year_levels" value="{{years.year_level}}">{{years.year_description}}</ion-option>
+       </ion-select>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+      
+    </div>
+   <div [hidden]="has_students == true || no_connection == true || dis == false" class="no_connection" >
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="ios-people" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> {{noresult}} </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+  <div [hidden]="no_connection == false" class="no_connection" >
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Unable to fetch all students</h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+     <ion-item class="error-item"><button ion-button icon-left clear block (click)="allStudents()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+   <div [hidden]="has_students == true || no_connection == true || dis == true" class="no_connection" >
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block >
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+<div [hidden]="dis == false || no_connection == true || has_students == false" class="student-list" >
+
+    <ion-list >
+    
+   
+      <button ion-item *ngFor="let students of allstudents" (click)="select_students(students)" >
+        <ion-avatar item-left>
+          <img src="assets/img/avatar2.png">
+        </ion-avatar>
+        
+        <h2 color="primary">{{students.student_lastname}}, {{students.student_firstname}} </h2>
+        <p>Course: {{students.student_course}}</p>
+       
+          
+        <ion-icon *ngIf="students.status == 0" item-right color="primary" name="ios-checkmark-circle-outline"> </ion-icon>
+        <ion-icon *ngIf="students.status == 1" item-right color="primary" name="ios-checkmark-circle"> </ion-icon>
+       
+      </button>
+        
+      <!--  <ion-item hidden> <ion-input [(ngModel)]="students.student_id" placeholdeer="(Required)" value="{{students.student_id}}" [ngModelOptions]="{standalone: true}" hidden></ion-input></ion-item> -->
+     <!-- <ion-item-options>
+       
+        <button ion-button color="material-blue"  (click)="onadd_student(item,students.student_id, students.student_lastname, students.student_firstname)">
+            Add
+        </button>
+       
+      </ion-item-options>-->
+
+   
+  </ion-list>
+    
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)" color="primary">
+    <ion-infinite-scroll-content color="primary"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+ 
+      
+</div>
+ 
+</ion-content>
+<ion-footer class='footer-div'>
+  <div class="add-div" (click)="onAdd()">  
+  
+   
+                  <ion-icon  name="add" color="white"> Add selected ({{ count_selected }})   </ion-icon> 
+ 
+  </div>
+

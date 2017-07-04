@@ -1,0 +1,38 @@
+page-add-class {
+    
+     font-family: sans-serif;
+	.content-md {
+	    color: #000;
+	    background-color: #f4f4f4;
+	}
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #999;
+        font-weight: bold;
+    }
+    
+     [padding] h1:first-child, [padding] h2:first-child, [padding] h3:first-child, [padding] h4:first-child, [padding] h5:first-child, [padding] h6:first-child {
+     margin-top: 0; 
+    }
+	.list-md {
+	    margin: -1px 0 16px 0;
+	    border: 1px solid #ebebeb;
+	}
+
+	.item-md.item-block .item-inner {
+	        padding-right: 8px;
+            padding-left: 16px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            border-bottom: 1px solid #dedede;
+	}
+	.btn-item{
+
+		background-color: color($colors, primary);
+		text-align:center;
+		h4{
+			font-size:medium;
+		}
+		
+	}
+
+}

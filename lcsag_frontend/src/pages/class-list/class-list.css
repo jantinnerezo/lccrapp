@@ -1,0 +1,90 @@
+/* line 1, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+page-class-list {
+  font-family: sans-serif; }
+  /* line 3, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .item-inner {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-direction: inherit;
+    -ms-flex-direction: inherit;
+    flex-direction: inherit;
+    -webkit-align-items: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    margin: 0;
+    /* padding: 0; */
+    padding-left: 16px;
+    min-height: inherit;
+    border: 0; }
+  /* line 27, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .classlist-content {
+    background-color: #f4f4f4; }
+  /* line 31, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .item-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    cursor: pointer; }
+  /* line 40, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .no_connection {
+    background-color: #f4f4f4;
+    text-align: center; }
+  /* line 46, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .error-item {
+    background-color: #f4f4f4; }
+  /* line 51, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .sort-div {
+    padding-bottom: 16px; }
+  /* line 55, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .row1 {
+    padding-bottom: 16px; }
+    /* line 58, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+    page-class-list .row1 ion-col {
+      display: block;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      padding: 0;
+      width: 100%; }
+    /* line 66, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+    page-class-list .row1 ion-select {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      overflow: hidden;
+      max-width: 100%;
+      background-color: #f4f4f4;
+      padding-left: 16px;
+      text-align: right;
+      border-bottom: 2px solid #8bc34a; }
+  /* line 80, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .list-frame {
+    background-color: #fff;
+    padding-top: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 10px; }
+  /* line 90, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .list-frame:active {
+    background-color: #e0e0e0; }
+  /* line 94, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .list-frame h4 {
+    text-overflow: ellipsis; }
+  /* line 98, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/class-list/class-list.scss */
+  page-class-list .footer-div {
+    background-color: #ffffff;
+    text-align: center; }
+
+/*# sourceMappingURL=class-list.css.map */

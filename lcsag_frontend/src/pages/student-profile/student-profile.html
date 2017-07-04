@@ -1,0 +1,103 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> <ion-icon name='ios-contact'> </ion-icon> Student Profile </ion-title>
+     <ion-buttons end>
+         <button ion-button icon-only (click)="onRemove()" >
+        <ion-icon name="trash" ></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="dismiss()" >
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+	
+	<div padding>
+		<ion-list class="info-list">
+			<ion-item no-lines>
+			      <ion-avatar item-left>
+			        <img src="assets/img/avatar2.png">
+			      </ion-avatar>
+			      <ion-label><b> {{student_data.student_lastname}}, {{student_data.student_firstname}}  </b></ion-label>
+		    </ion-item>
+			 <ion-item>
+			      <ion-label stacked color="primary">Identification number:</ion-label>
+			     <ion-label> {{student_data.student_id}} </ion-label>
+			 </ion-item>
+			  <ion-item>
+			      <ion-label stacked color="primary">Lastname:</ion-label>
+			      <ion-label> {{student_data.student_lastname}} </ion-label>
+			 </ion-item>
+			  <ion-item>
+			      <ion-label stacked color="primary">Firstname:</ion-label>
+			      <ion-label> {{student_data.student_firstname}} </ion-label>
+			 </ion-item>
+			  <ion-item>
+			      <ion-label stacked color="primary">Course:</ion-label>
+			      <ion-label> {{student_data.student_course}} </ion-label>
+			 </ion-item>
+			  <ion-item>
+			      <ion-label stacked color="primary">Address:</ion-label>
+			       <ion-label>
+				        {{student_data.student_address}}
+			      </ion-label>
+			 </ion-item>
+			  <ion-item>
+			      <ion-label stacked color="primary">Phone:</ion-label>
+			      <ion-label>{{student_data.student_phone}} </ion-label>
+			 </ion-item>
+			 
+		</ion-list>
+	</div>
+	<div class="header0">
+    	<ion-icon name="calendar" color="label"> Attendance </ion-icon>
+	 </div>
+	<div class="student-attendance" >
+		
+
+			 <div class="present">
+        
+              <h5> Attendance: {{attendance}} </h5>
+             </div>
+			     
+			  <div class="late">
+			     
+			     	<h5> Tardiness: {{late}}  </h5>    
+			     
+			  </div >
+
+			  <div class="absent">
+			      
+			      <h5> Absences: {{absent}} </h5> 
+			     
+			 </div>
+
+		
+	 </div>
+
+	<div class="header1">
+     <ion-icon name='list' color="label"> Classes ({{count_class}}) </ion-icon>
+	 </div>
+	<div class="student-class" >
+		
+
+			 <div padding class="classes-div" *ngFor="let classes of student_class">
+			      <h5 > {{classes.class_name}}  </h5>
+			      <ion-icon name="person" color="label" > Instructor: {{classes.instructor_firstname}} {{classes.instructor_lastname}} </ion-icon> 
+			 </div>
+
+		
+	 </div>
+
+	<div class="header2"> </div>
+	<div class="student-assessement">
+
+	</div>
+
+</ion-content>

@@ -1,0 +1,70 @@
+page-students {
+    
+  font-family: sans-serif;
+  ion-app.md [padding], ion-app.md [padding] .scroll-content {
+     padding:0;
+  }
+ 
+	.no_connection{
+
+      background-color: #fff;
+      text-align:center;
+      margin-top: 20%;
+      
+  }
+  .tab-icon{
+    display: inline-block;
+    font-size: 1em;
+  }
+  .tab-label{
+
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    border-bottom: 1px solid #dedede;
+    padding: 10px;
+
+  }
+  .tab-title{
+   
+      text-align:center;
+      background-color: #f4f4f4;
+      border-bottom: solid 1px #cccccc;
+  }
+  
+  .item-md .item-block .item-inner {
+    padding-right: 0;
+    border-bottom: 0;
+  }
+  /*.search-div{
+
+       background-color:#f4f4f4;
+  }*/
+  .item_padding{
+
+    padding-left:0;
+  }
+  .item-md {
+    padding-left:10px;
+  }
+  .item-avatar  {     
+    width:100% !important;  
+    height : 100% !important;  
+    max-width: 100px !important;  //any size
+    max-height: 100px !important; //any size 
+}
+  .item-md ion-avatar ion-img, .item-md ion-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+}

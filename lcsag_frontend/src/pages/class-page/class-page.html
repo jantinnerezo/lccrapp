@@ -1,0 +1,286 @@
+<!--
+  Generated template for the ClassPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{class_data.class_name}}</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="class_navigation">
+      <ion-segment-button value="students" checked>
+       Students
+      </ion-segment-button>
+      <ion-segment-button value="attendance">
+        Attendance
+      </ion-segment-button>
+      <ion-segment-button value="assessment">
+        Assessment
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-content padding class="class-content">
+	
+ <div [ngSwitch]="class_navigation">
+ 
+
+ <div *ngSwitchCase="'students'"> 
+ 
+   <ion-fab right top #fab3>
+  <button ion-fab color="primary" (click)="show_students()"><ion-icon name="person-add"></ion-icon></button>
+  </ion-fab>
+
+ <div class="search-div">
+      <ion-searchbar color="primary"
+                   [(ngModel)]="searchText"
+                   (ionInput)="searchStudent($event)"
+                   placeholder="Search Students">
+    </ion-searchbar>
+  </div>
+
+  <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="ios-people" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> You currently don't have students in this class </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Unable to fetch Students </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item class="error-item"><button ion-button icon-left clear block (click)="display_students()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+   <div [hidden]="has_students == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block (click)="display_classList()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+  <div [hidden]="no_result == true || no_connection == true || has_students == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let student of students" #item>
+      <button ion-item (click)="view_profile(student)" >
+        <ion-avatar item-left>
+          <img src="assets/img/student_image.png">
+        </ion-avatar>
+        <h2>{{student.student_lastname}}, {{student.student_firstname}} </h2>
+        <p>{{student.student_course}}</p>
+      
+      </button>
+     
+      <ion-item-options>
+        <button ion-button color="danger" (click)="onRemove(student, item, student.student_id, student.student_lastname, student.student_firstname)" >
+            Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+</div>
+  
+
+ <div *ngSwitchCase="'attendance'"> 
+ 
+   <ion-fab right top #fab3>
+  <button ion-fab color="primary" (click)="add_attendance()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+ <!-- <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> You currently don't have attendance records in this class </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Unable to fetch attendance records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item class="error-item"><button ion-button icon-left clear block (click)="display_students()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+   <div [hidden]="has_students == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block (click)="display_classList()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+  <div [hidden]="no_result == true || no_connection == true || has_students == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let students of students_data" #item>
+      <button ion-item (click)="view_profile(students)" >
+        <ion-icon item-left name="calendar" color="primary">
+          
+        </ion-icon>
+        <h2>{{students.student_lastname}}, {{students.student_firstname}} </h2>
+        <p>{{students.student_course}}</p>
+      
+      </button>
+
+      <ion-item-options>
+       
+        <button ion-button color="danger" (click)="onRemove(item, students.student_id, students.student_lastname, students.student_firstname)" >
+            Remove
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+ 
+      
+</div>-->
+
+  
+
+</div>
+
+<div *ngSwitchCase="'assessment'"> 
+ 
+   <ion-fab right top #fab3>
+  <button ion-fab color="primary" (click)="add_assessment()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+ <!-- <div [hidden]="no_result == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="calendar" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> You currently don't have attendance records in this class </h2> </ion-item>
+    
+    </ion-list>
+  </div>
+
+   <div [hidden]="no_connection == false" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center >
+     <button ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+    <ion-item class="error-item">
+      <h2 align="center" color='errormsg'> Unable to fetch attendance records </h2> 
+       <p align="center" color='errormsg'> Make sure you are connected to LC network </p> </ion-item>
+       <ion-item class="error-item"><button ion-button icon-left clear block (click)="display_students()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+   <div [hidden]="has_students == true || no_connection == true || no_result == true" class="no_connection">
+    <ion-list no-lines>
+    <ion-item class="error-item" item-center hidden >
+     <button  ion-button block clear icon-only color="errormsg" large> <ion-icon name="sad" color="errormsg" > </ion-icon> </button></ion-item> 
+   
+        <ion-spinner name="crescent" color="primary"> </ion-spinner>
+     <ion-item hidden class="error-item"><button ion-button icon-left clear block (click)="display_classList()">
+      <ion-icon name="refresh"> Retry </ion-icon>
+    </button></ion-item>
+    </ion-list>
+   
+  </div>
+
+
+  <div [hidden]="no_result == true || no_connection == true || has_students == false" class="student-list">
+ 
+    <ion-list >
+    
+    <ion-item-sliding *ngFor="let students of students_data" #item>
+      <button ion-item (click)="view_profile(students)" >
+        <ion-icon item-left name="calendar" color="primary">
+          
+        </ion-icon>
+        <h2>{{students.student_lastname}}, {{students.student_firstname}} </h2>
+        <p>{{students.student_course}}</p>
+      
+      </button>
+
+      <ion-item-options>
+       
+        <button ion-button color="danger" (click)="onRemove(item, students.student_id, students.student_lastname, students.student_firstname)" >
+            Remove
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</div>-->
+
+
+</div>
+
+
+</div>
+	
+
+</ion-content>
+<ion-footer class='footer-div'>
+  <div >  
+  <ion-row>
+    <ion-col>     
+          <div class="footer-item">
+         
+                  <ion-icon  name="ios-people" color="label">  Total number of Students: {{ count }}  </ion-icon> 
+           </div>
+      
+     </ion-col>
+
+  
+  </ion-row>
+  </div>
+
+</ion-footer>
+
+

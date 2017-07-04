@@ -1,0 +1,54 @@
+page-view-attendance {
+	 font-family: sans-serif;
+	.content-md {
+	    color: #000;
+	    background-color: #fff;
+	}
+	.date-item .item .item-md.item-block .item-inner {
+		background-color:#f4f4f4;
+		padding-right: 8px;
+    	border-bottom: 0 solid #dedede; 
+	}
+	.no_connection{
+
+     
+      text-align:center;
+      margin-top: 20%;
+      
+    }
+    .detail-row{
+        
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        padding-left: 10px;
+        h5 {
+            font-size: inherit;
+        }
+    }
+    .status-row{
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        padding-left: 10px;
+        background-color: #f4f4f4;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+	
+	.item-md {
+		padding-left:16px;
+	}
+	.current{
+       
+        padding-left:10px;
+        margin-left: 10px;
+        border-left: 5px solid color($colors, present);
+	}
+	.status-div{
+		text-align:center;
+		border-bottom: 1px solid #9e9e9e;
+	}
+}

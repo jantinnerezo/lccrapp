@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteBase /lcsagapp/lcsag_backend/
+
+
+RewriteCond $1 !^(index\.php|public|\.txt)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [L]
+
+#RewriteCond %{HTTP_HOST} !^www\.(.*)
+#RewriteRule (.*) http://www.%{HTTP_HOST}/$1 [R=s301,L]
+
+RewriteCond %{REQUEST_URI} !(.*)/$
+# dont rewrite if there was posted here!
+RewriteCond %{REQUEST_METHOD} !POST 
+RewriteCond %{REQUEST_URI} !\.html?$ [NC]
+RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+
+RewriteRule ^(.*)$ ./index.php?/$1 [L,QSA]
+#RewriteRule ^(.*)$ index.php/$1 [L,QSA]

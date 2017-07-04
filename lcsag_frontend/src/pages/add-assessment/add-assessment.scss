@@ -1,0 +1,68 @@
+page-add-assessment {
+    
+    font-family: sans-serif;
+	.content-md {
+	    color: #000;
+	    background-color: #f4f4f4;
+	}
+	.container{
+
+		background-color:#fff;
+		margin: 10px;
+    	border: 1px solid #e0e0e0;
+	}
+	.item-md {
+	    position: relative;
+	    padding-right: 0;
+	    padding-left: 0px; 
+	    font-size: 1.6rem;
+	    font-weight: normal;
+	    text-transform: none;
+	    color: #000;
+	    background-color: #fff;
+	    box-shadow: none;
+	    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+	    color: #999;
+	    margin-left: 10px;
+	}
+	.text-input-md {
+	    margin: 13px 8px 13px 8px;
+	    padding: 0;
+	    width: calc(100% - 8px - 8px);
+	    text-align: right;
+	}
+	.select-md {
+	    padding: 0;
+	}
+	.select-md .select-icon {
+    		position: relative;
+    		width: 20px;
+    		height: 19px;
+	}
+	ion-row {
+		    display: -webkit-flex;
+		    display: -ms-flexbox;
+		    display: flex;
+		    width: 100%;
+		    margin-top: 10px;
+	}
+	.add-btn{
+
+			background-color: #EC407A;
+		    width: 100%;
+		    padding-top: 10px;
+		    padding-bottom: 10px;  
+		    border: 1px solid #EC407A;
+		    color:#fff;
+		    font-size: medium;
+	}
+	
+	.add-btn:active{
+
+			background-color:#d93b70;
+	}
+
+}

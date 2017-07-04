@@ -1,0 +1,90 @@
+<!--
+  Generated template for the AddClass page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+   <ion-navbar>
+   <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()" >
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title > <ion-icon name="document"> </ion-icon> New Class </ion-title>
+   
+  </ion-navbar>
+
+
+</ion-header>
+ 
+
+<ion-content padding>
+
+	<ion-list>
+     
+		   <ion-item>
+     		 <ion-label  >Name:</ion-label>
+      		<ion-input [(ngModel)]="class_name" placeholder="Example: English 4" [ngModelOptions]="{standalone: true}"></ion-input>
+   		   </ion-item>
+
+   		   <ion-item>
+     		 <ion-label >Description:</ion-label>
+      		<ion-textarea  [(ngModel)]="class_desc" placeholder="Example: Philippine Literature " [ngModelOptions]="{standalone: true}"></ion-textarea>
+   		   </ion-item>
+        
+            <ion-item>
+		    <ion-label>Schedule:</ion-label>
+		    <ion-select [(ngModel)]="sched" interface="action-sheet" placeholder="Select" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let s of schedules" value="{{s.schedule_id}}">{{s.schedule_description}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+
+            <ion-item>
+		    <ion-label>Start time:</ion-label>
+		    <ion-select [(ngModel)]="start_time" interface="action-sheet" placeholder="Select" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let t of time" value="{{t}}">{{t}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+            
+          <ion-item>
+		    <ion-label>End time:</ion-label>
+		    <ion-select [(ngModel)]="end_time" interface="action-sheet" placeholder="Select" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let t of time" value="{{t}}">{{t}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+           
+            <ion-item>
+		    <ion-label>Room:</ion-label>
+		    <ion-select [(ngModel)]="rm" interface="action-sheet" placeholder="Select" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let room of rooms" value="{{room.room_id}}">{{room.room_description}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+
+   		   <ion-item>
+		    <ion-label>Semester:</ion-label>
+		    <ion-select [(ngModel)]="class_sem" interface="action-sheet" placeholder="{{sem}}" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let sem of semester" value="{{sem.semester_id}}">{{sem.semester}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+	  	    <ion-item>
+		    <ion-label>School Year:</ion-label>
+		    <ion-select [(ngModel)]="class_schoolyear" placeholder="{{sy}}" interface="action-sheet" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let sy of schoolyear" value="{{sy.schoolyear_id}}">{{sy.school_year}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+
+    		<ion-item class="btn-item" (click)="addClass(class_name, class_desc, sched, start_time, end_time, rm, class_sem, class_schoolyear)" >
+    			  <h4 color="white"> Save </h4>
+    		</ion-item>
+				
+
+
+	</ion-list>
+
+</ion-content>

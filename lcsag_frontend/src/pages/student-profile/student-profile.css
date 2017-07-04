@@ -1,0 +1,33 @@
+/* line 1, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+page-student-profile {
+  font-family: sans-serif; }
+  /* line 6, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+  page-student-profile .info-list .label-md {
+    margin: 5px 0px 0px 0px;
+    padding-bottom: 13px; }
+  /* line 11, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+  page-student-profile .item-md ion-avatar ion-img, page-student-profile .item-md ion-avatar img {
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden; }
+  /* line 17, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+  page-student-profile .header0 {
+    background-color: #f4f4f4;
+    padding-left: 16px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb; }
+  /* line 23, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+  page-student-profile .header1 {
+    background-color: #f4f4f4;
+    padding-left: 16px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb; }
+  /* line 32, D:/xampp/htdocs/lcsagapp/lcsag_frontend/src/pages/student-profile/student-profile.scss */
+  page-student-profile .header2 {
+    background-color: #f4f4f4;
+    height: 50px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb; }
+
+/*# sourceMappingURL=student-profile.css.map */

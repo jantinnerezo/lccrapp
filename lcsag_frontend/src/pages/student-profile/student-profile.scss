@@ -1,0 +1,68 @@
+page-student-profile {
+    
+    font-family: sans-serif;
+    .info-list{
+        
+        .label-md {
+            margin: 5px 0px 0px 0px;
+            padding-bottom: 13px;
+        }
+    }
+	.item-md ion-avatar ion-img, .item-md ion-avatar img {
+	    width: 45px;
+	    height: 40px;
+	    border-radius: 50%;
+	    overflow: hidden;
+	}
+	.header0{
+		background-color:#f4f4f4;
+		 padding:15px;
+		border-top: 1px solid #ebebeb;
+		border-bottom: 1px solid #ebebeb;
+	}
+	.header1{
+		background-color:#f4f4f4;
+        padding:15px;
+		border-top: 1px solid #ebebeb;
+		border-bottom: 1px solid #ebebeb;
+	}
+	.student-assessment{
+
+	}
+	.header2{
+		background-color:#f4f4f4;
+		height: 50px;
+		border-top: 1px solid #ebebeb;
+		border-bottom: 1px solid #ebebeb;
+	}
+	.student-class{
+
+       
+	}
+    .present{
+        
+        padding-top:15px;
+        padding-bottom:15px;
+        padding-left:15px;
+        border-left: 8px solid color($colors, present);
+       // border-bottom: 1px solid #f4f4f4;
+    }
+    .late{
+        
+        padding-top:15px;
+        padding-bottom:15px;
+        padding-left:15px;
+        border-bottom: 1px solid #f4f4f4;
+        border-top: 1px solid #f4f4f4;
+        border-left: 8px solid color($colors, late);
+    }
+    .absent{
+        
+        padding-top:15px;
+        padding-bottom:15px;
+        padding-left:15px;
+        border-bottom: 1px solid #f4f4f4;
+        border-left: 8px solid color($colors, absent);
+        
+    }
+}

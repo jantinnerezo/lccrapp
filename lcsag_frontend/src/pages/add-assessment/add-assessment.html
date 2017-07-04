@@ -1,0 +1,62 @@
+<!--
+  Generated template for the AddAssessment page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><ion-icon name="add"> </ion-icon> Add Assessment</ion-title>
+     <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()" >
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+<div class="container">
+	<ion-list>
+   
+		   <ion-item>
+     		 <ion-label >Name:</ion-label>
+      		<ion-input [(ngModel)]="assessment_name" align="right" placeholder="(Required)" [ngModelOptions]="{standalone: true}"></ion-input>
+   		   </ion-item>
+
+   		   <ion-item>
+		    <ion-label> Type:</ion-label>
+		    <ion-select [(ngModel)]="assessment_type" placeholder="(Required)" interface="action-sheet" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let tp of types" value="{{tp.type_id}}">{{tp.type}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+	  	  
+
+    		<ion-item>
+    			 <ion-label>Set total score:</ion-label>
+    		     <ion-input type="number"  [(ngModel)]="total_score"  placeholder="(Required)" [ngModelOptions]="{standalone: true}"></ion-input>
+    		</ion-item>
+
+    		<ion-item >
+		    <ion-label> Term:</ion-label>
+		    <ion-select [(ngModel)]="assessment_term" placeholder="(Required)" interface="action-sheet" [ngModelOptions]="{standalone: true}" >
+		      <ion-option *ngFor="let t of terms" value="{{t.term_id}}">{{t.term}}</ion-option>
+			 </ion-select>
+	  	   </ion-item>
+
+    		<ion-row>
+         
+             <button class="add-btn" icon-left block (click)="add_assessment(assessment_name, assessment_type, total_score,  assessment_term)" >
+               Save
+            </button>
+       
+			 </ion-row>
+
+	</ion-list>
+  </div>
+</ion-content>
